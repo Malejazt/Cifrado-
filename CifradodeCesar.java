@@ -23,7 +23,7 @@ public class CifradodeCesar {
         // Vectores para cifrado
         String min = "abcdefghijklmnopqrstuvwxyz ";
         String may = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
-        //Vectores para decifrar
+        //Vectores para descifrar
         String min1 = " zyxwvutsrqponmlkjihgfedcba";
         String may1 = " ZYXWVUTSRQPONMLKJIHGFEDCBA";
        
@@ -42,7 +42,7 @@ public class CifradodeCesar {
        
         
        
-         System.out.println("Digite la linea que desea cifrar o decifrar");
+         System.out.println("Digite la linea que desea cifrar o descifrar");
          frase1=S.nextLine();
          System.out.println(frase1);
          System.out.println("Introduce la clave ");
@@ -84,8 +84,8 @@ public class CifradodeCesar {
     /**
      *
      */
-    //metodo de decifrado realiza lo mismo que el metodo cifrar, pero los vectores tienen valores invertidos 
-    public void decifrado(){
+    //metodo de descifrado realiza lo mismo que el metodo cifrar, pero los vectores tienen valores invertidos 
+    public void descifrado(){
         for(int i=0;i<frase1.length(); i++){
             for(int j =0;j<min.length();j++){
                 if (frase1.charAt(i)==min1.charAt(j)){
@@ -125,7 +125,7 @@ public class CifradodeCesar {
          CifradodeCesar datos= new  CifradodeCesar();
          System.out.println("Que desea realizar\n");
          System.out.println("Si es cifrado.Digite el numero 1\n");
-         System.out.println("Si es decifrado.Digite el numero 2 \n");
+         System.out.println("Si es descifrado.Digite el numero 2 \n");
          num=numero.nextInt();
          // toma la decision de lo que se va a ejecutar
         if (num==1){
@@ -135,7 +135,7 @@ public class CifradodeCesar {
         }else if(num==2){
 
              datos.ingresoDatosC(); 
-             datos.decifrado();
+             datos.descifrado();
            
         }
 
