@@ -9,8 +9,9 @@ package cifradodecesar;
 import java.util.Scanner;
 
 /**
- *
+ *@author  Gabriel
  * @author Alejandra
+ * @version 2.0
  */
 public class CifradodeCesar {
 
@@ -37,15 +38,15 @@ public class CifradodeCesar {
          Scanner S=new Scanner (System.in);
         
          
-        frase2="";
+            frase2="";
        
         
        
-        System.out.println("Digite la linea que desea cifrar o decifrar");
-        frase1=S.nextLine();
-        System.out.println(frase1);
-        System.out.println("Introduce la clave ");
-        clave=S.nextInt();
+         System.out.println("Digite la linea que desea cifrar o decifrar");
+         frase1=S.nextLine();
+         System.out.println(frase1);
+         System.out.println("Introduce la clave ");
+         clave=S.nextInt();
     
     }
 
@@ -76,15 +77,16 @@ public class CifradodeCesar {
             }
         }
 }
-        System.out.println(frase1);
-        System.out.println(frase2);
+        System.out.println(frase1);//imprime frase original
+        System.out.println(frase2);//imprime frase cifrada
      }
 
     /**
      *
      */
+    //metodo de decifrado realiza lo mismo que el metodo cifrar, pero los vectores tienen valores invertidos 
     public void decifrado(){
-            for(int i=0;i<frase1.length(); i++){
+        for(int i=0;i<frase1.length(); i++){
             for(int j =0;j<min.length();j++){
                 if (frase1.charAt(i)==min1.charAt(j)){
                     if(j+clave>=min1.length()){
@@ -104,48 +106,39 @@ public class CifradodeCesar {
                 
             }
     
-        }
-    
+        }  
 }
-        System.out.println(frase1);
-        System.out.println(frase2);    
-    
-
+         System.out.println(frase1);
+         System.out.println(frase2);   
      }
    
     /**
      *
      * @param args
      */
+    //llama los metodos para ser ejecutados
     public static void main(String[] args) {
          Scanner numero=new Scanner (System.in);
-        int num;
+         int num;
          CifradodeCesar ob = new CifradodeCesar ();
         // TODO code application logic here
          CifradodeCesar datos= new  CifradodeCesar();
-        System.out.println("Que desea realizar\n");
-        System.out.println("Si es cifrado.Digite el numero 1\n");
-        System.out.println("Si es decifrado.Digite el numero 2 \n");
-        num=numero.nextInt();
-         
+         System.out.println("Que desea realizar\n");
+         System.out.println("Si es cifrado.Digite el numero 1\n");
+         System.out.println("Si es decifrado.Digite el numero 2 \n");
+         num=numero.nextInt();
+         // toma la decision de lo que se va a ejecutar
         if (num==1){
-          datos.ingresoDatosC(); 
-          datos.cifrado();
+            datos.ingresoDatosC(); 
+            datos.cifrado();
           
         }else if(num==2){
 
-        datos.ingresoDatosC(); 
-           datos.decifrado();
+             datos.ingresoDatosC(); 
+             datos.decifrado();
            
         }
-        
-        
-        
-        
-        
-       
-        
-       
+
     }   
 }
 
