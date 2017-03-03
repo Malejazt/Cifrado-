@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package cifradodecesar;
 
 import java.util.Scanner;
@@ -16,14 +17,20 @@ public class CifradodeCesar {
     /**
      * @param args the command line arguments
      */
-        String frase1,frase2,frase3;
-        int desplazamiento;
+        String frase1,frase2;
+        int clave;
+        // Vectores para cifrado
         String min = "abcdefghijklmnopqrstuvwxyz ";
         String may = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+        //Vectores para decifrar
+        String min1 = " zyxwvutsrqponmlkjihgfedcba";
+        String may1 = " ZYXWVUTSRQPONMLKJIHGFEDCBA";
+       
        
     /**
      *
      */
+        //metodo para ingresar los datos 
     public void  ingresoDatosC(){
            
        
@@ -38,57 +45,36 @@ public class CifradodeCesar {
         frase1=S.nextLine();
         System.out.println(frase1);
         System.out.println("Introduce la clave ");
-        desplazamiento=S.nextInt();
+        clave=S.nextInt();
     
     }
 
     /**
      *
-     */
-    public void  ingresoDatosD(){
-           
-       
-         Scanner S=new Scanner (System.in);
-        
-         
-        frase3="";
-       
-        
-       
-        System.out.println("Digite la linea que desea cifrar o decifrar");
-        frase2=S.nextLine();
-        System.out.println(frase2);
-        System.out.println("Introduce la clave ");
-        desplazamiento=S.nextInt();
-    
-    }
-
-    /**
+     */  /**
      *
      */
+    //metodo para cifrar 
     public void cifrado(){
         for(int i=0;i<frase1.length(); i++){
             for(int j =0;j<min.length();j++){
-                if (frase1.charAt(i)==min.charAt(j)){
-                    if(j+desplazamiento>=min.length()){
-                        frase2+=min.charAt((j+desplazamiento)% min.length());
-          
+                if (frase1.charAt(i)==min.charAt(j)){// se mueve por el vector de las letras minusculas para cifrar deacuerdo a la clave
+                    if(j+clave>=min.length()){//permite devolverme a la primera posicion del vector
+                        frase2+=min.charAt((j+clave)% min.length());
                     }else{
-                        frase2 += min.charAt(j+ desplazamiento);
+                        frase2 += min.charAt(j+ clave);
                     }
                 }
-                else if(frase1.charAt(i)==may.charAt(j)){
-                    if(j+desplazamiento>=may.length()){
-                        frase2+=may.charAt((j+desplazamiento)% may.length());
+                else if(frase1.charAt(i)==may.charAt(j)){// en el caso que sean mayusculas, se movera por el vector que contiene letras Mayusculas
+                    if(j+clave>=may.length()){
+                        frase2+=may.charAt((j+clave)% may.length());
           
-                    }else{
-                        frase2 += may.charAt(j+ desplazamiento);
                     }
-                
+                    else{
+                        frase2 += may.charAt(j+ clave);
+                    }
             }
-    
         }
-    
 }
         System.out.println(frase1);
         System.out.println(frase2);
@@ -98,22 +84,22 @@ public class CifradodeCesar {
      *
      */
     public void decifrado(){
-        for(int i=0;i<frase2.length(); i++){
-            for(int j =min.length();j>=0;j++){
-                if (frase2.charAt(i)!=min.charAt(j)){
-                    if(j-desplazamiento>=min.length()){
-                        frase3+=min.charAt((j-desplazamiento)% min.length());
+            for(int i=0;i<frase1.length(); i++){
+            for(int j =0;j<min.length();j++){
+                if (frase1.charAt(i)==min1.charAt(j)){
+                    if(j+clave>=min1.length()){
+                        frase2+=min1.charAt((j+clave)% min1.length());
           
                     }else{
-                        frase3 += min.charAt(j- desplazamiento);
+                        frase2 += min1.charAt(j+ clave);
                     }
                 }
-                else if(frase2.charAt(i)!=may.charAt(j)){
-                    if(j-desplazamiento>=may.length()){
-                        frase3+=may.charAt((j-desplazamiento)% may.length());
+                else if(frase1.charAt(i)==may1.charAt(j)){
+                    if(j+clave>=may1.length()){
+                        frase2+=may1.charAt((j+clave)% may1.length());
           
                     }else{
-                        frase3 += may.charAt(j- desplazamiento);
+                        frase2 += may1.charAt(j+ clave);
                     }
                 
             }
@@ -121,8 +107,10 @@ public class CifradodeCesar {
         }
     
 }
-        System.out.println(frase2);
-        System.out.println(frase3);
+        System.out.println(frase1);
+        System.out.println(frase2);    
+    
+
      }
    
     /**
@@ -132,6 +120,7 @@ public class CifradodeCesar {
     public static void main(String[] args) {
          Scanner numero=new Scanner (System.in);
         int num;
+         CifradodeCesar ob = new CifradodeCesar ();
         // TODO code application logic here
          CifradodeCesar datos= new  CifradodeCesar();
         System.out.println("Que desea realizar\n");
@@ -141,13 +130,19 @@ public class CifradodeCesar {
          
         if (num==1){
           datos.ingresoDatosC(); 
-          datos.cifrado();  
+          datos.cifrado();
+          
         }else if(num==2){
 
-        datos.ingresoDatosD(); 
+        datos.ingresoDatosC(); 
            datos.decifrado();
            
         }
+        
+        
+        
+        
+        
        
         
        
